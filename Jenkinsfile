@@ -39,8 +39,7 @@ stages{
   
   stage('UploadArtifactsIntoNexus'){
     steps{
-       sh  "mvn clean deploy"
-       nexusPublisher nexusInstanceId: 'sample', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'Workspace/target/maven-web-application.war']], mavenCoordinate: [artifactId: 'jenkins-war', groupId: 'org.jenkins-ci.main', packaging: 'war', version: '1.0.1']]]
+       nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'sample', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'Workspace/target/maven-web-application.war']], mavenCoordinate: [artifactId: 'jenkins-war', groupId: 'org.jenkins-ci.main', packaging: 'wa', version: '1.0.1']]]
     }
   }
  /* 
