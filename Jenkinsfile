@@ -55,22 +55,10 @@ stages{
 }//Stages Closing
 
 post{
-
- success{
-	 emailext body: 'Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}.', 
-		 recipientProviders: [buildUser()], 
-		 subject: 'Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}', 
-		 to: 'nagaraju.mitta@accenture.com'
+ always{
+         emailext body: 'check the build status ', subject: 'pipeline status ', to: 'nagaraju.mitta@accenture.com'   
+        }
  }
- 
- failure{
- emailext to: 'naga86.iphone@gmail.com',
-          subject: 'Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}.',
-          body: 'Pipeline Build is over .. Build # is ..${env.BUILD_NUMBER} and Build status is.. ${currentBuild.result}.',
-          replyTo: 'naga86.iphone@gmail.com'
- }
- 
-}
 
 
 }//Pipeline closing
