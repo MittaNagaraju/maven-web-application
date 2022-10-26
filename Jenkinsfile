@@ -1,7 +1,7 @@
 pipeline{
 
 agent {
-  label 'Build-In Node'
+  label 'Built-In Node'
 }
 
 tools{
