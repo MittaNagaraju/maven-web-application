@@ -39,7 +39,7 @@ stages{
   
   stage('UploadArtifactsIntoNexus'){
     steps{
-       nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'sample', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'workspace/JavaMavenProj/target/maven-web-application.war']], mavenCoordinate: [artifactId: 'jenkins-war', groupId: 'org.jenkins-ci.main', packaging: 'wa', version: '1.0.1']]]
+       nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'sample', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/home/jenkins/jenkins-workspace/workspace/JavaMavenProj/target/maven-web-application.war']], mavenCoordinate: [artifactId: 'jenkins-war', groupId: 'org.jenkins-ci.main', packaging: 'wa', version: '1.0.1']]]
     }
   }
  /* 
