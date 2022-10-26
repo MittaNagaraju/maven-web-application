@@ -35,13 +35,15 @@ stages{
   sh  "mvn clean sonar:sonar"
   }
   }
+ */
   
   stage('UploadArtifactsIntoNexus'){
-  steps{
-  sh  "mvn clean deploy"
+    steps{
+       sh  "mvn clean deploy"
+       nexusPublisher nexusInstanceId: 'sample', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'Workspace/target/maven-web-application.war']], mavenCoordinate: [artifactId: 'jenkins-war', groupId: 'org.jenkins-ci.main', packaging: 'war', version: '1.0.1']]]
+    }
   }
-  }
-  
+ /* 
   stage('DeployAppIntoTomcat'){
   steps{
   sshagent(['bfe1b3c1-c29b-4a4d-b97a-c068b7748cd0']) {
