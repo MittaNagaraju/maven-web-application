@@ -1,11 +1,9 @@
 pipeline{
 
-agent {
-  label 'Built-In Node'
-}
+agent any
 
 tools{
-maven 'maven3'
+maven '3.8.4'
 
 }
 
