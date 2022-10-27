@@ -23,18 +23,18 @@ stages{
 	  git credentialsId: 'Github-naga-user', url: 'https://github.com/MittaNagaraju/maven-web-application.git'
 	}
   }
-  
-  stage('Build'){
-  steps{
-  sh  "mvn clean package"
-  }
-  }
-  
+	
   stage('ExecuteSonarQubeReport'){
     steps{
       withSonarQubeEnv('sonarqube8.9.10.6') {
         sh  "mvn clean sonar:sonar"
       }
+    }
+  }
+
+  stage('Build'){
+    steps{
+      sh  "mvn clean package"
     }
   }
   
