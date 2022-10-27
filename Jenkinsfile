@@ -29,13 +29,14 @@ stages{
   sh  "mvn clean package"
   }
   }
-/*
- stage('ExecuteSonarQubeReport'){
-  steps{
-  sh  "mvn clean sonar:sonar"
+  
+  stage('ExecuteSonarQubeReport'){
+    steps{
+      withSonarQubeEnv('sonarqube8.9.10.6') {
+        sh  "mvn clean sonar:sonar"
+      }
+    }
   }
-  }
- */
   
   stage('UploadArtifactsIntoNexus'){
     steps{
