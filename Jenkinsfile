@@ -26,7 +26,7 @@ stages{
 	
   stage('ExecuteSonarQubeReport'){
     steps{
-      withSonarQubeEnv('sonarqube8.9.10.6') {
+      withSonarQubeEnv('sonarqube-8.9.10') {
         sh  "mvn clean sonar:sonar"
       }
     }
