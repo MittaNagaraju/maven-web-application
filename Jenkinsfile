@@ -24,20 +24,19 @@ stages{
 	}
   }
 	
-  stage('ExecuteSonarQubeReport'){
-    steps{
-      withSonarQubeEnv('sonarqube-8.9.10') {
-        sh  "mvn clean sonar:sonar"
-      }
-    }
-  }
-
   stage('Build'){
     steps{
       sh  "mvn clean package"
     }
   }
   
+  stage('ExecuteSonarQubeReport'){
+    steps{
+      withSonarQubeEnv('sonarqube-8.9.10') {
+        sh  "mvn sonar:sonar"
+      }
+    }
+  }
   stage('UploadArtifactsIntoNexus'){
     steps{
        /*nexusPublisher nexusInstanceId: 'nexus3', nexusRepositoryId: 'sample', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: '/home/jenkins/jenkins-workspace/workspace/JavaMavenProj/target/maven-web-application.war']], mavenCoordinate: [artifactId: 'JavaMavenProj', groupId: 'org.jenkins-ci.main', packaging: 'war', version: '1.0.1']]]*/
