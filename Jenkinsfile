@@ -56,9 +56,7 @@ stages{
 
 post{
  always{
-	 /*
-         emailext body: 'check the build status ', subject: 'pipeline status ', to: 'nagaraju.mitta@accenture.com'
-	 */
+         emailext body: 'check the build status ', subject: 'pipeline status ', to: ''
         }
  }
 
